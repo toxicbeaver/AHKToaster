@@ -7,8 +7,9 @@ You can easily customize how toast notification looks by tweaking various option
 
 ## Installation and Usage
 You have two options to download and use SNotify:
-1- Visit [releases](https://github.com/adnantopal/snotify/releases) page to download latest compiled version of SNotify. Unzip release package to a location where you want the application to reside and run `SNotify.exe`.
-2- If you have AutoHotkey installed in your PC, you can download master repository, unzip the package where you want the scripts to reside and run `snotify.ahk` without the need to compile AutoHotkey code.
+
+1. Visit [releases](https://github.com/adnantopal/snotify/releases) page to download latest compiled version of SNotify. Unzip release package to a location where you want the application to reside and run `SNotify.exe`.
+2. If you have AutoHotkey installed in your PC, you can download master repository, unzip the package where you want the scripts to reside and run `snotify.ahk` without the need to compile AutoHotkey code.
 
 It's recommended to use compiled versions that's described in 1st option because they're the stable releases of SNotify.
 
