@@ -1,12 +1,12 @@
-﻿;-----------------------------------------------------------
+;-----------------------------------------------------------
 ;---                     SNotify v1.0                    ---
 ;---                                                     ---
 ;---                  2016, Adnan Topal                  ---
 ;---            github.com/adnantopal/snotify            ---
 ;-----------------------------------------------------------
 
-SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
-SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
+SendMode Input
+SetWorkingDir %A_ScriptDir%
 #SingleInstance,Force
 #Persistent
 
@@ -94,12 +94,13 @@ TitleChanged:
 		tempfile = %temp%\SNotifyData
 		searchArtist := UriEncode(trackInfo1)
 		searchTrack := UriEncode(trackInfo2)
+
 		FileEncoding, UTF-8
 		UrlDownloadToFile, https://itunes.apple.com/search?media=music&entity=musicArtist&term=%searchArtist%&entity=allTrack&term=%searchArtist%+%searchTrack%&limit=1, %tempfile%
 		FileRead, SNotifyData, %tempfile%
 		FileDelete, %tempfile%
 
-		; get album art...
+		; Get Album Art
 		artURL:= RegExReplace(SNotifyData, ".*""(artworkUrl60)"":""(.*?).jpg"".*","$2")
 		IfInString, artURL, resultCount
 		{
@@ -109,7 +110,7 @@ TitleChanged:
 			artwork = %tempfile%.jpg
 		}
 
-		; get track name	  
+		; Get Track Name	  
 		trackName:= RegExReplace(SNotifyData, ".*""(trackName)"":""(.*?)"".*","$2")
 		IfInString, trackName, resultCount
 		{
@@ -118,7 +119,7 @@ TitleChanged:
 			trackName:= ReplaceAll(trackName)
 		}
 
-		; get artist name	  
+		; Get Artist Name	  
 		artistName:= RegExReplace(SNotifyData, ".*""(artistName)"":""(.*?)"".*","$2")
 		IfInString, artistName, resultCount
 		{
@@ -127,11 +128,11 @@ TitleChanged:
 			artistName:= ReplaceAll(artistName)
 		}
 
-		; get album name	  
+		; Get Album Name	  
 		albumName:= RegExReplace(SNotifyData, ".*""(collectionName)"":""(.*?)"".*","$2")
 		IfInString, albumName, resultCount
 		{
-			albumName:= -
+			albumName:= "-"
 		} else {
 			albumName:= ReplaceAll(albumName)
 		}
