@@ -221,11 +221,16 @@ HotkeyVolumeDown:
 	return
 }
 
+;------------------------
+;--- Helper Functions ---
+;------------------------
 ReplaceAll(Input){
-	replace := {"&":"and","’":""}
+	replace := {"’":""} ; This is the only problematic character coming from iTunes API. More characters might be added once seen as problematic.
+
+	StringReplace, Ampersand, Input, &, &&, All ; Processing Ampersand individually because it can't be replaced/escaped within the object above.
 
 	For what, with in replace
-		StringReplace, Output, Input, %what%, %with%, All
+		StringReplace, Output, Ampersand, %what%, %with%, All
 
 	return Output
 }
